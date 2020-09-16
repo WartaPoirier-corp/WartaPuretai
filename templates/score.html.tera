@@ -1,0 +1,9 @@
+{% extends "base" %}
+
+{% block content %}
+<ul>Votre score est :
+    {% for cat, pts in session.score %}
+    <li> {{ cat }} : {{ pts }} </li>
+{% endfor %}
+</ul>
+{% endblock content %}

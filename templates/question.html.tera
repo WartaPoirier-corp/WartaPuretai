@@ -1,0 +1,10 @@
+{% extends "base" %}
+
+{% block content %}
+{{ question }}
+<ul>
+{% for chc in choices %}
+    <li><a href="/{{id}}/{{loop.index0}}"> {{ chc.text }} </a></li>
+{% endfor %}
+</ul>
+{% endblock content %}
