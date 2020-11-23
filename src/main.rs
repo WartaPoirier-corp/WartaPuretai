@@ -1,4 +1,5 @@
 use rocket_contrib::templates::Template;
+use rocket_contrib::serve::StaticFiles;
 use rocket::get;
 use rocket::post;
 use rocket::State;
@@ -81,6 +82,7 @@ async fn main() {
             register_answer,
             score,
         ])
+        .mount("/static", StaticFiles::from("static"))
         .attach(Template::fairing())
         .manage(Mutex::new(Vec::<Session>::new()))
         .launch()
@@ -148,3 +150,4 @@ fn score(sessions: State<Mutex<Vec<Session>>>, cookies: Cookies) -> Template {
     nom_de_variable_j_ai_pas_d_inspi.insert("session", session);
     Template::render("score", nom_de_variable_j_ai_pas_d_inspi)
 }
+

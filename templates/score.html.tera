@@ -1,9 +1,14 @@
 {% extends "base" %}
 
 {% block content %}
-<ul>Votre score est :
+<p>Votre score est :</p>
+<div class="score">
     {% for cat, pts in session.score %}
-    <li> {{ cat }} : {{ pts }} </li>
-{% endfor %}
-</ul>
+    <section>
+        {{ cat }}
+        <img src="/static/{{ cat | slugify }}.png" alt="{{ cat }}">
+        {{ pts }} points
+    </section>
+    {% endfor %}
+</div>
 {% endblock content %}

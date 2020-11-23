@@ -1,0 +1,112 @@
+@font-face {
+  font-family: 'Nerko One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/static/NerkoOne.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nerko One', sans-serif;
+    font-size: 20pt;
+}
+
+body {
+    padding: 10vh 10vw;
+    text-align: center;
+    background-image: url('/static/bg.png');
+    background-repeat: repeat;
+    background-size: 20%;
+    background-attachment: fixed;
+}
+
+h1 a {
+    font-size: 28pt;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+}
+
+main {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    height: 3em;
+}
+
+main p {
+    margin: 2em 0;
+}
+
+input[type="submit"] {
+    appearence: none;
+    border: 2px solid black;
+    border-radius: 2px;
+    padding: 1em;
+    font-size: 20pt;
+    cursor: pointer;
+    background: white;
+    box-shadow: 0px 0px 20px #dadadada;
+    transition-duration: 0.1s;
+    transition-property: box-shadow, border-color;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+    box-shadow: 0px 0px 10px #dadadaea;
+    border-color: red;
+}
+
+.choices {
+    list-style: none;
+    border: 2px solid black;
+    background: white;
+    width: clamp(20ch, 20vw, 90vw);
+}
+
+.choices li {
+}
+
+.choices li:hover {
+    background: #FF000011;
+}
+
+.choices li a {
+    display: block;
+    padding: 1em 0;
+    width: 100%;
+}
+
+.score {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    width: clamp(30ch, 60vw, 90vw);
+    justify-content: center;
+}
+
+.score section {
+    background: white;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: clamp(20ch, 25vw, 90vw);
+    padding: 1em;
+}
+
+.score img {
+    max-height: 10em;
+    display: block;
+    margin: 1em auto;
+}
