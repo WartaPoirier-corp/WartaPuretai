@@ -7,9 +7,10 @@ use rocket::uri;
 use rocket::http::{Cookie, Cookies};
 use std::collections::HashMap;
 use std::sync::Mutex;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
+use tokio::fs;
 
-#[derive(Clone, Debug, Serialize, Hash, PartialEq, Eq)]
+#[derive(Clone, Debug, Deserialize, Serialize, Hash, PartialEq, Eq)]
 enum Category {
     Trashness,
     Sex,
@@ -17,13 +18,13 @@ enum Category {
     Drugs
 }
 
-#[derive(Serialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 struct Choice {
     text : String,
     score : HashMap<Category, i32>
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Deserialize)]
 struct Question {
     question : String,
     choices : Vec<Choice>,
@@ -43,26 +44,14 @@ macro_rules! map {
     };
 }
 
-lazy_static::lazy_static! {
-    static ref QUESTIONS: Vec<Question> = vec![
-        Question {
-            question: "sa pluse??".to_string(),
-            choices: vec![ 
-                Choice {
-                    text : "ui".to_string(),
-                    score: map! {
-                        Sex => 10,
-                        Alcohol => 5
-                    }
-                },
-                Choice {
-                    text : "nope".to_string(),
-                    score: map! {}
-                }
-            ],
-            id: 0,
+macro_rules! get_session {
+    ($sessions:ident, $cookies:ident) => {
+        {
+            let session_id = $cookies.get("session").unwrap();
+            let mut sessions = $sessions.lock().unwrap();
+            sessions.iter_mut().find(|x| x.cookie == session_id.value()).unwrap().clone()
         }
-    ];
+    };
 }
 
 #[derive(Clone, Debug, Serialize)]
@@ -73,6 +62,9 @@ struct Session {
 
 #[tokio::main]
 async fn main() {
+    // initalisation serde
+    let question_string = fs::read_to_string("questions.json").await.unwrap();
+    let questions: Vec<Question> = serde_json::from_str(&question_string).unwrap();
     rocket::ignite()
         .mount("/", rocket::routes![
             home,
@@ -82,20 +74,11 @@ async fn main() {
             score,
         ])
         .attach(Template::fairing())
+        .manage(Mutex::new(questions))
         .manage(Mutex::new(Vec::<Session>::new()))
         .launch()
         .await
         .unwrap();
-}
-
-macro_rules! get_session {
-    ($sessions:ident, $cookies:ident) => {
-        {
-            let session_id = $cookies.get("session").unwrap();
-            let mut sessions = $sessions.lock().unwrap();
-            sessions.iter_mut().find(|x| x.cookie == session_id.value()).unwrap().clone()
-        }  
-    };
 }
 
 #[get("/")]
@@ -109,8 +92,9 @@ fn create_session(session : State<Mutex<Vec<Session>>>, mut cookies: Cookies) ->
     let mut session = session.lock().unwrap();
     let score = map!{
         Trashness => 0,
-        Sex => 69,
-        Drugs => 420
+        Sex => 0,
+        Alcohol => 0,
+        Drugs => 0
     };
     session.push(Session { cookie : "🍪".to_string(), score : score});
     cookies.add(Cookie::new("session", "🍪"));
@@ -118,33 +102,39 @@ fn create_session(session : State<Mutex<Vec<Session>>>, mut cookies: Cookies) ->
 }
 
 #[get("/<id_question>")]
-fn question(id_question: usize) -> Template {
-    let question = &QUESTIONS[id_question];
+fn question(id_question: usize, questions: State<Mutex<Vec<Question>>>) -> Template {
+    let questions_locked = questions.lock().unwrap();
+    let question = &questions_locked[id_question];
     Template::render("question", question)
 }
 
 #[get("/<id_question>/<id_rep>")]
-fn register_answer(id_question: usize, id_rep: usize, cookies: Cookies, sessions: State<Mutex<Vec<Session>>>) -> Redirect {
+fn register_answer(
+    id_question: usize,
+    id_rep: usize,
+    cookies: Cookies,
+    sessions: State<Mutex<Vec<Session>>>,
+    questions: State<Mutex<Vec<Question>>>
+) -> Redirect {
     let session_id = cookies.get("session").unwrap();
     let mut sessions = sessions.lock().unwrap();
-    let mut session = sessions.iter_mut().find(|x| x.cookie == session_id.value()).unwrap();
-    for (category, to_add) in QUESTIONS[id_question].choices[id_rep].score.clone() {
+    let session = sessions.iter_mut().find(|x| x.cookie == session_id.value()).unwrap();
+    let questions_locked = questions.lock().unwrap();
+    for (category, to_add) in questions_locked[id_question].choices[id_rep].score.clone() {
         *session.score.entry(category).or_insert(0) += to_add;
     }
 
-    if id_question + 1 >= QUESTIONS.len() {
+    if id_question + 1 >= questions_locked.len() {
         Redirect::to(uri!(score))
-    }
-    else {
+    } else {
         Redirect::to(uri!(question : id_question = id_question + 1))
     }
 }
 
 #[get("/score")]
 fn score(sessions: State<Mutex<Vec<Session>>>, cookies: Cookies) -> Template {
-    
     let session = get_session!(sessions, cookies);
-    let mut nom_de_variable_j_ai_pas_d_inspi = HashMap::new();
-    nom_de_variable_j_ai_pas_d_inspi.insert("session", session);
-    Template::render("score", nom_de_variable_j_ai_pas_d_inspi)
+    let mut template_vars = HashMap::new();
+    template_vars.insert("session", session);
+    Template::render("score", template_vars)
 }

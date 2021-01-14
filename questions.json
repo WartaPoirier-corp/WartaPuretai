@@ -1,0 +1,78 @@
+[
+    {
+        "question": "Est ce que tu as déjà rompu avec quelqu'un par messages ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : 50
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 0
+    },
+    {
+        "question": "Est ce que tu as déjà retourné tes sous-vêtements pour les porter un jour de plus ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : 15
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 1
+    },
+    {
+        "question": "À quelle fréquence prend-tu des douches ? ",
+        "choices": [
+            {
+                "text": "Matin et soir",
+                "score": {
+                    "Trashness" : -15
+                }
+            },
+            {
+                "text": "Tous les jours",
+                "score": {}
+            },
+            {
+                "text": "Tous les deux jours",
+                "score": {
+                    "Trashness" : 5
+                }
+            },
+            {
+                "text": "Une fois par semaine, c'est déjà bien",
+                "score": {
+                    "Trashness" : 30
+                }
+            }
+        ],
+        "id": 2
+    },
+    {
+        "question": "As-tu déjà pris une douche de déodorant ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : 5
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 3
+    }
+]
