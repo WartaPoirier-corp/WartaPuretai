@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WartaPureté</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="/static/logo.png">
 </head>
 <body>
     <h1><a href="/">WartaPureté</a></h1>
-    <h2>Le test de pureté de la WartaPoirier Corp &copy;</h2>
+    <img src="/static/logo.png" alt="Logo" class="logo">
+    <h2>Le test de pureté de la WartaPoirier Corp</h2>
+    <main>
     {% block content %}{% endblock content %}
+    </main>
 </body>
 </html>

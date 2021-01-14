@@ -1,8 +1,8 @@
 {% extends "base" %}
 
 {% block content %}
-{{ question }}
-<ul>
+<p>{{ question }}</p>
+<ul class="choices">
 {% for chc in choices %}
     <li><a href="/{{id}}/{{loop.index0}}"> {{ chc.text }} </a></li>
 {% endfor %}
