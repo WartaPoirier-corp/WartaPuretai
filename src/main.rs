@@ -66,6 +66,13 @@ async fn main() {
     // initalisation serde
     let question_string = fs::read_to_string("questions.json").await.unwrap();
     let questions: Vec<Question> = serde_json::from_str(&question_string).unwrap();
+
+    for (i, q) in questions.iter().enumerate() {
+        if (i as u32) != q.id {
+            println!("WARNING: question {} has id {}", i, q.id);
+        }
+    }
+
     rocket::ignite()
         .mount("/", rocket::routes![
             home,

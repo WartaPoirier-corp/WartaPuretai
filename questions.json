@@ -74,5 +74,1091 @@
             }
         ],
         "id": 3
+    },
+    {
+        "question": "Est-ce que tu ne t'es déjà pas essuyé après être allé aux toilettes parce que « C'est propre à priori » ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : 50
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 4
+    },
+    {
+        "question": "Est-ce que tu te laves les mains après être allé⋅e au toilettes ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {}
+            },
+            {
+                "text": "Non",
+                "score": {
+                    "Trashness": 10
+                }
+            }
+        ],
+        "id": 5
+    },
+    {
+        "question": "À quelle fréquence tu te brosses les dents ?",
+        "choices": [
+            {
+                "text": "3 fois par jour",
+                "score": {
+                    "Trashness": -20
+                }
+            },
+            {
+                "text": "2 fois par jour",
+                "score": {}
+            },
+            {
+                "text": "1 fois par jour",
+                "score": {
+                    "Trashness": 10
+                }
+            },
+            {
+                "text": "Au moins une fois par semaine",
+                "score": {
+                    "Trashness": 40
+                }
+            },
+            {
+                "text": "Moins souvent que ça",
+                "score": {
+                    "Trashness": 60
+                }
+            }
+        ],
+        "id": 6
+    },
+    {
+        "question": "As-tu déjà mangé de la nourriture tombée par terre ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : 30
+                }
+            },
+            {
+                "text": "Seuleument si ça faisait moins de trois secondes",
+                "score": {
+                    "Trashness" : 10
+                }
+            },
+            {
+                "text": "Non, jamais",
+                "score": {}
+            }
+        ],
+        "id": 7
+    },
+    {
+        "question": "As-tu eu une éducation religieuse ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : -50
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 8
+    },
+    {
+        "question": "Vas-tu à la messe (ou équivalent) ?",
+        "choices": [
+            {
+                "text": "Oui, tout le temps",
+                "score": {
+                    "Trashness" : -50
+                }
+            },
+            {
+                "text": "Ça m'est déjà arrivé",
+                "score": {
+                    "Trashness": -5
+                }
+            },
+            {
+                "text": "Jamais",
+                "score": {
+                    "Trashness": 5
+                }
+            }
+        ],
+        "id": 9
+    },
+    {
+        "question": "As-tu été dans une école privée religieuse ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : -20
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 10
+    },
+    {
+        "question": "Est-ce que ton animal de compagnie te lèches (et surtout : est-ce que tu le laisse faire) ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : 20
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 11
+    },   
+    {
+        "question": "Est-ce que tu roules des pelles aux chiens ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : 50
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 12
+    },
+    {
+        "question": "Es-tu de droite ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : 50
+                }
+            },
+            {
+                "text": "Je me considère ni de droite, ni de gauche",
+                "score": {
+                    "Trashness" : 75
+                }
+            },
+            {
+                "text": "Non : je vote PS ou EELV",
+                "score": {
+                    "Trashness": 20
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 13
+    },
+    {
+        "question": "As-tu déjà fait des batailles de nourriture ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : 15
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 14
+    },
+    {
+        "question": "Tries-tu tes déchêts ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness": -10
+                }
+            },
+            {
+                "text": "Non",
+                "score": {
+                    "Trashness": 15
+                }
+            }
+        ],
+        "id": 15
+    },
+    {
+        "question": "Quel type de mouchoirs utilises-tu ?",
+        "choices": [
+            {
+                "text": "Des mouchoirs en papier",
+                "score": {}
+            },
+            {
+                "text": "Des mouchoirs en papier, parfumés à la menthe",
+                "score": {
+                    "Trashness": 10
+                }
+            },
+            {
+                "text": "Un mouchoir en tissu",
+                "score": {
+                    "Trashness": 40
+                }
+            }
+        ],
+        "id": 16
+    },
+    {
+        "question": "As-tu déjà fait un canular téléphonique",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : 20
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 17
+    },
+    {
+        "question": "As-tu déjà pissé dans la rue",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness": 30
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 18
+    },
+    {
+        "question": "As-tu déjà fréquenté une plage nudiste ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : 40
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 19
+    },
+    {
+        "question": "La Bretagne est-elle un pays ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : 10
+                }
+            },
+            {
+                "text": "Non",
+                "score": {
+                    "Trashness": -10
+                }
+            }
+        ],
+        "id": 20
+    },
+    {
+        "question": "As-tu déjà été premi⋅er⋅ère de la classe ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness": -15
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 21
+    },
+    {
+        "question": "Bois-tu de l'alcool",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Alcohol" : 5
+                }
+            },
+            {
+                "text": "Non",
+                "score": {
+                    "Alcohol": -10
+                }
+            }
+        ],
+        "id": 22
+    },
+    {
+        "question": "As-tu déjà vomi après avoir bu ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Trashness" : 10,
+                    "Alcohol": 15
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 23
+    },
+    {
+        "question": "As-tu déjà fait un black-out à cause de l'alcool ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Alcohol": 30
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 24
+    },
+    {
+        "question": "As-tu déjà montré ton cul, ton sexe ou tes seins à cause de l'alcool ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Alcohol": 30,
+                    "Trashness": 5
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 25
+    },
+    {
+        "question": "T'es tu déjà réveillé⋅e sans savoir où tu étais après avoir bu ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Alcohol": 20
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 26
+    },
+    {
+        "question": "As-tu déjà appelé des exs en étant bourré⋅e ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Alcohol": 20
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 27
+    },
+    {
+        "question": "T'es tu déjà fait virer d'une boîte ou d'un bar tellement tu étais bourré⋅e ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Alcohol": 40
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 28
+    },
+    {
+        "question": "Pratiques-tu le vomi stratégique ?",
+        "choices": [
+            {
+                "text": "Oui, vomir c'est repartir",
+                "score": {
+                    "Alcohol": 30
+                }
+            },
+            {
+                "text": "Jamais eu l'occasion, mais j'hésiterais pas",
+                "score": {
+                    "Alcohol": 20
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 29
+    },
+    {
+        "question": "Quel est l'alcool le plus fort que tu aie bu ?",
+        "choices": [
+            {
+                "text": "Du champomy",
+                "score": {
+                    "Alcohol": -10
+                }
+            },
+            {
+                "text": "De la bière ou du cidre",
+                "score": {
+                    "Alcohol": 5
+                }
+            },
+            {
+                "text": "Du vin",
+                "score": {
+                    "Alcohol": 10
+                }
+            },
+            {
+                "text": "De la vodka, de l'eau-de-vie ou du whisky",
+                "score": {
+                    "Alcohol": 20
+                }
+            },
+            {
+                "text": "De l'alcool à brûler (oui, j'ai quitté ce monde)",
+                "score": {
+                    "Alcohol": 50
+                }
+            }
+        ],
+        "id": 30
+    },
+    {
+        "question": "As-tu déjà pris de l'alcool au petit déjeuner ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Alcohol": 30
+                }
+            },
+            {
+                "text": "Pas au petit déjeuner, mais au casse-croûte de 10h, oui",
+                "score": {
+                    "Alcohol": 15
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 31
+    },
+    {
+        "question": "As-tu déjà conduit en état d'ébriété ?",
+        "choices": [
+            {
+                "text": "Oui, j'ai eu un accident",
+                "score": {
+                    "Alcohol": 40
+                }
+            },
+            {
+                "text": "Oui, mais tout c'est bien passé",
+                "score": {
+                    "Alcohol": 20
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 32
+    },
+    {
+        "question": "« chui paaaaass bourrééééééé »",
+        "choices": [
+            {
+                "text": "Je l'ai déjà dit",
+                "score": {
+                    "Alcohol": 30
+                }
+            },
+            {
+                "text": "Je l'ai jamais dit",
+                "score": {}
+            }
+        ],
+        "id": 33
+    },
+    {
+        "question": "Combien de pompes as-tu déjà proposé à quelqu'un en étant bourré⋅e ?",
+        "choices": [
+            {
+                "text": "Hein ???",
+                "score": {}
+            },
+            {
+                "text": "Moins de dix",
+                "score": {
+                    "Alcohol": 10
+                }
+            },
+            {
+                "text": "Plus de dix",
+                "score": {
+                    "Alcohol": 15
+                }
+            },
+            {
+                "text": "J'ai tenté plein de nombres jusqu'à ce que quelqu'un accepte",
+                "score": {
+                    "Alcohol": 30
+                }
+            }
+        ],
+        "id": 34
+    },
+    {
+        "question": "As-tu déjà passé un week-end sans descendre en dessous de la barre des 1g/L ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Alcohol": 50
+                }
+            },
+            {
+                "text": "J'ai essayé, sans succès",
+                "score": {
+                    "Alcohol": 20
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 35
+    },
+    {
+        "question": "As-tu déjà fumé une clope ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Drugs": 10
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 36
+    },
+    {
+        "question": "As-tu déjà fumé de la beuh ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Drugs": 25
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 37
+    },
+    {
+        "question": "Sais-tu ce que c'est « une indus »",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Drugs": 15
+                }
+            },
+            {
+                "text": "Non",
+                "score": {
+                    "Drugs": -5
+                }
+            }
+        ],
+        "id": 38
+    },
+    {
+        "question": "Sais-tu ce qu'est « un grinder » ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Drugs": 20
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 39
+    },
+    {
+        "question": "As-tu déjà fait une overdose ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Drugs": 40
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 40
+    },
+    {
+        "question": "As-tu déjà pris des champignons ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Drugs": 50
+                }
+            },
+            {
+                "text": "Oui, j'adore les cèpes !",
+                "score": {
+                    "Drugs": -10
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 41
+    },
+    {
+        "question": "As-tu déjà pris de la MD ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Drugs": 50
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 42
+    },
+    {
+        "question": "As-tu déjà testé la cocaïne ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Drugs": 40
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 43
+    },
+    {
+        "question": "As-tu déjà refusé une taffe ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Drugs": -10
+                }
+            },
+            {
+                "text": "Non",
+                "score": {
+                    "Drugs": 20
+                }
+            }
+        ],
+        "id": 44
+    },
+    {
+        "question": "Est-ce que tu es ce pote qui gratte de la drogue à tout le monde ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Drugs": 20
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 45
+    },
+    {
+        "question": "Est-ce que tu as déjà goûté un space cake ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Drugs": 25
+                }
+            },
+            {
+                "text": "Oui, sans le savoir",
+                "score": {
+                    "Drugs": 5
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 46
+    },
+    {
+        "question": "À quel âge as tu fait ta première fois ?",
+        "choices": [
+            {
+                "text": "13 ans ou moins",
+                "score": {
+                    "Sex": 40
+                }
+            },
+            {
+                "text": "Entre 14 et 16 ans",
+                "score": {
+                    "Sex": 30
+                }
+            },
+            {
+                "text": "Entre 17 et 20 ans",
+                "score": {
+                    "Sex": 20
+                }
+            },
+            {
+                "text": "Au delà de 21 ans",
+                "score": {
+                    "Sex": 10
+                }
+            },
+            {
+                "text": "Toujours vierge",
+                "score": {
+                    "Sex": -10
+                }
+            }
+        ],
+        "id": 47
+    },
+    {
+        "question": "Combien de sextoys différents as-tu testé ?",
+        "choices": [
+            {
+                "text": "Aucun et j'ai pas envie d'y toucher",
+                "score": {
+                    "Sex": -10
+                }
+            },
+            {
+                "text": "Aucun mais ça ne saurais tarder",
+                "score": {
+                    "Sex": 5
+                }
+            },
+            {
+                "text": "Un seul",
+                "score": {
+                    "Sex": 15
+                }
+            },
+            {
+                "text": "Deux ou trois",
+                "score": {
+                    "Sex": 25
+                }
+            },
+            {
+                "text": "Quatre ou plus",
+                "score": {
+                    "Sex": 40
+                }
+            }
+        ],
+        "id": 48
+    },
+    {
+        "question": "As-tu déjà désiré quelqu'un de beaucoup plus âgé ?",
+        "choices": [
+            {
+                "text": "Oui, il y avait entre 5 et 15 ans d'écart",
+                "score": {
+                    "Sex": 20
+                }
+            },
+            {
+                "text": "Oui, il y avait entre 16 et 25 ans d'écart",
+                "score": {
+                    "Sex": 40
+                }
+            },
+            {
+                "text": "Oui, il y avait plus de 26 ans d'écart",
+                "score": {
+                    "Sex": 60
+                }
+            },
+            {
+                "text": "Non",
+                "score": {}
+            }
+        ],
+        "id": 49
+    },
+    {
+        "question": "T'es-tu déjà fait mal en forniquant (brulûre de tapis, frein déchiré, glotte errodée, etc.) ?",
+        "choices": [
+            {
+                "text": "Oui",
+                "score": {
+                    "Sex": 25
+                }
+            },
+            {
+                "text": "Non, jamais",
+                "score": {}
+            }
+        ],
+        "id": 50
+    },
+    {
+        "question": "Combien de kinks « inhabituels » as-tu ?",
+        "choices": [
+            {
+                "text": "Kink ? Qu'est ce que c'est ?",
+                "score": {
+                    "Sex": -15
+                }
+            },
+            {
+                "text": "Aucun",
+                "score": {}
+            },
+            {
+                "text": "Un ou deux",
+                "score": {
+                    "Sex": 20
+                }
+            },
+            {
+                "text": "Trois ou plus",
+                "score": {
+                    "Sex": 40
+                }
+            }
+        ],
+        "id": 51
+    },
+    {
+        "question": "Combien de partenaires (sexuels) as-tu eu au cours de ta vie ?",
+        "choices": [
+            {
+                "text": "Zéro",
+                "score": {
+                    "Sex": -10
+                }
+            },
+            {
+                "text": "Un ou deux",
+                "score": {
+                    "Sex": 5
+                }
+            },
+            {
+                "text": "Entre 3 et 7",
+                "score": {
+                    "Sex": 20
+                }
+            },
+            {
+                "text": "Huit ou plus",
+                "score": {
+                    "Sex": 35
+                }
+            }
+        ],
+        "id": 52
+    },
+    {
+        "question": "Combien de crush simultanés as-tu déjà eu ?",
+        "choices": [
+            {
+                "text": "J'ai jamais eu de crush",
+                "score": {
+                    "Sex": -10
+                }
+            },
+            {
+                "text": "Un seul",
+                "score": {}
+            },
+            {
+                "text": "Deux ou trois",
+                "score": {
+                    "Sex": 20
+                }
+            },
+            {
+                "text": "Plus que trois",
+                "score": {
+                    "Sex": 30
+                }
+            }
+        ],
+        "id": 53
+    },
+    {
+        "question": "As-tu déjà eu envie de baiser avec un⋅e prof ?",
+        "choices": [
+            {
+                "text": "Non",
+                "score": {}
+            },
+            {
+                "text": "Oui",
+                "score": {
+                    "Sex": 25
+                }
+            },
+            {
+                "text": "Oui et je l'ai fait",
+                "score": {
+                    "Sex": 50
+                }
+            }
+        ],
+        "id": 54
+    },
+    {
+        "question": "Est-ce qu'il t'es arrivé de baiser sous drogue ou sous alcool ?",
+        "choices": [
+            {
+                "text": "Non",
+                "score": {}
+            },
+            {
+                "text": "Oui",
+                "score": {
+                    "Sex": 25,
+                    "Drugs": 10,
+                    "Alcohol": 10
+                }
+            }
+        ],
+        "id": 55
+    },
+    {
+        "question": "« De toute façon c'est l'âme qui compte, le corps c'est secondaire » ",
+        "choices": [
+            {
+                "text": "Pas d'accord, le corps ça compte",
+                "score": {
+                    "Sex": 10
+                }
+            },
+            {
+                "text": "D'accord, baiser avec des enfants c'est pas grave si ils sont matures dans leur tête",
+                "score": {
+                    "Sex": 25,
+                    "Trashness": 80
+                }
+            },
+            {
+                "text": "D'accord (mais ça a ses limites)",
+                "score": {
+                    "Sex": -80,
+                    "Trashness": -50
+                }
+            }
+        ],
+        "id": 56
     }
 ]

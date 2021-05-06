@@ -1,7 +1,8 @@
 {% extends "base" %}
 
 {% block content %}
-<p>Jouez avec nous !</p>
+<p>Joue avec nous !</p>
+<p>Il y a 56 questions, ça devrait te prendre un quart d'heure.</p>
 <form action="/start" method="post">
     <input type="submit" value="Commencer">
 </form>
