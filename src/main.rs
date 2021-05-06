@@ -105,8 +105,9 @@ fn create_session(session : State<Mutex<Vec<Session>>>, mut cookies: Cookies) ->
         Alcohol => 0,
         Drugs => 0
     };
-    session.push(Session { cookie : "🍪".to_string(), score : score});
-    cookies.add(Cookie::new("session", "🍪"));
+    let sess_id: u32 = rand::random();
+    session.push(Session { cookie : format!("{}", sess_id), score});
+    cookies.add(Cookie::new("session", format!("{}", sess_id)));
     Redirect::to(uri!(question : 0))
 }
 
