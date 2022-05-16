@@ -1,14 +1,14 @@
+use rocket::fs::FileServer;
 use rocket::get;
+use rocket::http::{Cookie, CookieJar};
 use rocket::post;
-use rocket::State;
 use rocket::response::Redirect;
 use rocket::uri;
-use rocket::http::{Cookie, CookieJar};
-use std::collections::HashMap;
-use std::sync::Mutex;
-use rocket::fs::FileServer;
+use rocket::State;
 use rocket_dyn_templates::Template;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
+use std::sync::Mutex;
 use tokio::fs;
 
 #[derive(Clone, Debug, Deserialize, Serialize, Hash, PartialEq, Eq)]
@@ -16,20 +16,20 @@ enum Category {
     Trashness,
     Sex,
     Alcohol,
-    Drugs
+    Drugs,
 }
 
 #[derive(Deserialize, Serialize, Debug)]
 struct Choice {
-    text : String,
-    score : HashMap<Category, i32>
+    text: String,
+    score: HashMap<Category, i32>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 struct Question {
-    question : String,
-    choices : Vec<Choice>,
-    id : u32,
+    question: String,
+    choices: Vec<Choice>,
+    id: u32,
 }
 
 macro_rules! map {
@@ -46,19 +46,21 @@ macro_rules! map {
 }
 
 macro_rules! get_session {
-    ($sessions:ident, $cookies:ident) => {
-        {
-            let session_id = $cookies.get("session").unwrap();
-            let mut sessions = $sessions.lock().unwrap();
-            sessions.iter_mut().find(|x| x.cookie == session_id.value()).unwrap().clone()
-        }
-    };
+    ($sessions:ident, $cookies:ident) => {{
+        let session_id = $cookies.get("session").unwrap();
+        let mut sessions = $sessions.lock().unwrap();
+        sessions
+            .iter_mut()
+            .find(|x| x.cookie == session_id.value())
+            .unwrap()
+            .clone()
+    }};
 }
 
 #[derive(Clone, Debug, Serialize)]
 struct Session {
-    cookie : String,
-    score : HashMap<Category, i32>
+    cookie: String,
+    score: HashMap<Category, i32>,
 }
 
 #[rocket::launch]
@@ -74,13 +76,10 @@ async fn launch() -> _ {
     }
 
     rocket::build()
-        .mount("/", rocket::routes![
-            home,
-            create_session,
-            question,
-            register_answer,
-            score,
-        ])
+        .mount(
+            "/",
+            rocket::routes![home, create_session, question, register_answer, score],
+        )
         .mount("/static", FileServer::from("static"))
         .attach(Template::fairing())
         .manage(questions)
@@ -89,23 +88,32 @@ async fn launch() -> _ {
 
 #[get("/")]
 fn home(questions: &State<Vec<Question>>) -> Template {
-    Template::render("index", rocket_dyn_templates::context! {
-        question_count: questions.len(),
-    })
+    Template::render(
+        "index",
+        rocket_dyn_templates::context! {
+            question_count: questions.len(),
+        },
+    )
 }
 
 #[post("/start")]
-fn create_session(session : &State<Mutex<Vec<Session>>>, cookies: &CookieJar<'_>) -> Redirect {
+fn create_session(session: &State<Mutex<Vec<Session>>>, cookies: &CookieJar<'_>) -> Redirect {
     let mut session = session.lock().unwrap();
-    let score = map!{
+    let score = map! {
         Trashness => 0,
         Sex => 0,
         Alcohol => 0,
         Drugs => 0
     };
-    let sess_id: u32 = rand::random();
-    session.push(Session { cookie : format!("{}", sess_id), score});
-    cookies.add(Cookie::new("session", format!("{}", sess_id)));
+
+    let sess_id = rand::random::<u32>().to_string();
+
+    session.push(Session {
+        cookie: sess_id.clone(),
+        score,
+    });
+
+    cookies.add(Cookie::new("session", sess_id));
     Redirect::to(uri!(question(0)))
 }
 
@@ -125,7 +133,11 @@ fn register_answer(
 ) -> Redirect {
     let session_id = cookies.get("session").unwrap();
     let mut sessions = sessions.lock().unwrap();
-    let session = sessions.iter_mut().find(|x| x.cookie == session_id.value()).unwrap();
+    let session = sessions
+        .iter_mut()
+        .find(|x| x.cookie == session_id.value())
+        .unwrap();
+
     for (category, to_add) in questions[id_question].choices[id_rep].score.clone() {
         *session.score.entry(category).or_insert(0) += to_add;
     }
