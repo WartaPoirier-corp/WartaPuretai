@@ -1,14 +1,40 @@
 {% extends "base" %}
 
+{% block head %}
+<meta name=”robots” content="noindex">
+{% endblock head %}
+
 {% block content %}
-<p>Votre score est :</p>
+{% if shared_by %}
+<p id="score-label">
+    <span>Score de <span id="player-name">{{shared_by}}</span></span>
+    <button hidden id="share-icon" class="icon-button-small" aria-label="Partager"><img src="/static/share.png" alt="Icône partager"></button>
+    <br>
+    <small>(le <time datetime="{{shared_at_rfc3339}}">{{shared_at}}</time> [heure de Paris])</small>
+</p>
+<script src="/static/share.js" defer></script>
+{% else %}
+<p id="score-label">Votre score est :</p>
+{% endif %}
 <div class="score">
-    {% for cat, pts in session.score %}
+    {% for cat, pts in scores %}
     <section>
         {{ cat }}
         <img src="/static/{{ cat | slugify }}.png" alt="{{ cat }}">
-        {{ pts }} points
+        <span id="points-{{ cat | slugify }}">{{ pts }}</span> points
     </section>
     {% endfor %}
 </div>
+{% if not shared_by %}
+<form id="share-form" action="/score/share" method="post">
+    <label for="share-input-name">Votre nom</label>
+    <input type="text" name="name" id="share-input-name" placeholder="Fifrelin Lampion" autocomplete="given-name" required minlength="1" maxlength="50">
+    <button id="save-button" type="submit" class="icon-button">
+        <img src="/static/share.png" aria-hidden="true" alt="Icône partager">
+        <span>Obtenir le lien partageable</span>
+    </button>
+</form>
+{% else %}
+<a id="retry-button" class="button" href="/">Refaire le test</a>
+{% endif %}
 {% endblock content %}

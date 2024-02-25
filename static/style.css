@@ -48,7 +48,7 @@ main p {
     margin: 2em 0;
 }
 
-input[type="submit"] {
+input[type="submit"],button,.button {
     appearence: none;
     border: 2px solid black;
     border-radius: 2px;
@@ -62,7 +62,11 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover,
-input[type="submit"]:focus {
+input[type="submit"]:focus,
+button:hover,
+button:focus,
+.button:hover,
+.button:focus {
     box-shadow: 0px 0px 10px #dadadaea;
     border-color: red;
 }
@@ -109,4 +113,45 @@ input[type="submit"]:focus {
     max-height: 10em;
     display: block;
     margin: 1em auto;
+}
+
+.icon-button-small {
+    padding: 0.3em;
+}
+
+.icon-button-small > img {
+    height: 1em;
+}
+
+small {
+    font-size: 0.7em;
+    color: darkslategray;
+}
+
+small > * {
+    font-size: inherit;
+}
+
+.icon-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.4em !important;;
+}
+
+.icon-button > img {
+    height: 1.6em
+}
+
+#share-form {
+    margin-top: 2em;
+    width: calc(clamp(20ch, 25vw, 90vw) + 2em);
+}
+
+#save-button {
+    width: 100%;
+}
+
+#retry-button {
+    margin-top: 2em;
 }
