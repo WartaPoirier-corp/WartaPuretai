@@ -1,3 +1,6 @@
+mod sharing;
+
+use enum_map::EnumMap;
 use rocket::fs::FileServer;
 use rocket::get;
 use rocket::http::{Cookie, CookieJar};
@@ -11,7 +14,7 @@ use std::collections::HashMap;
 use std::sync::Mutex;
 use tokio::fs;
 
-#[derive(Clone, Debug, Deserialize, Serialize, Hash, PartialEq, Eq)]
+#[derive(Clone, Debug, Deserialize, Serialize, Hash, PartialEq, Eq, enum_map::Enum)]
 enum Category {
     Trashness,
     Sex,
@@ -32,19 +35,7 @@ struct Question {
     id: u32,
 }
 
-macro_rules! map {
-    ($($cat:ident => $score:expr),*) => {
-        {
-            #[allow(unused_mut)]
-            let mut hm = HashMap::new();
-
-             $(hm.insert(Category::$cat, $score);)*
-
-            hm
-        }
-    };
-}
-
+#[macro_export]
 macro_rules! get_session {
     ($sessions:ident, $cookies:ident) => {{
         let session_id = $cookies.get("session").unwrap();
@@ -60,7 +51,7 @@ macro_rules! get_session {
 #[derive(Clone, Debug, Serialize)]
 struct Session {
     cookie: String,
-    score: HashMap<Category, i32>,
+    score: EnumMap<Category, i32>,
 }
 
 #[rocket::launch]
@@ -78,7 +69,15 @@ async fn launch() -> _ {
     rocket::build()
         .mount(
             "/",
-            rocket::routes![home, create_session, question, register_answer, score],
+            rocket::routes![
+                home,
+                create_session,
+                question,
+                register_answer,
+                score,
+                sharing::score_share,
+                sharing::exported_score,
+            ],
         )
         .mount("/static", FileServer::from("static"))
         .attach(Template::fairing())
@@ -99,12 +98,7 @@ fn home(questions: &State<Vec<Question>>) -> Template {
 #[post("/start")]
 fn create_session(session: &State<Mutex<Vec<Session>>>, cookies: &CookieJar<'_>) -> Redirect {
     let mut session = session.lock().unwrap();
-    let score = map! {
-        Trashness => 0,
-        Sex => 0,
-        Alcohol => 0,
-        Drugs => 0
-    };
+    let score = EnumMap::default();
 
     let sess_id = rand::random::<u32>().to_string();
 
@@ -139,7 +133,7 @@ fn register_answer(
         .unwrap();
 
     for (category, to_add) in questions[id_question].choices[id_rep].score.clone() {
-        *session.score.entry(category).or_insert(0) += to_add;
+        session.score[category] += to_add;
     }
 
     if id_question + 1 >= questions.len() {
@@ -153,6 +147,6 @@ fn register_answer(
 fn score(sessions: &State<Mutex<Vec<Session>>>, cookies: &CookieJar<'_>) -> Template {
     let session = get_session!(sessions, cookies);
     let mut template_vars = HashMap::new();
-    template_vars.insert("session", session);
+    template_vars.insert("scores", session.score);
     Template::render("score", template_vars)
 }

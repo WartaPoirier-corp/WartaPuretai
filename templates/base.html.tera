@@ -6,6 +6,7 @@
     <title>WartaPureté</title>
     <link rel="stylesheet" href="/static/style.css">
     <link rel="icon" href="/static/logo.png">
+    {% block head %}{% endblock head %}
 </head>
 <body>
     <h1><a href="/">WartaPureté</a></h1>
