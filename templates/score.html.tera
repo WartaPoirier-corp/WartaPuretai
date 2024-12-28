@@ -2,6 +2,12 @@
 
 {% block head %}
 <meta name=”robots” content="noindex">
+{% if shared_by %}
+<meta property="og:type" content="website">
+<meta property="og:title" content="WartaPureté">
+<meta property="og:description" content="Voici le score de {{shared_by}}. Est-tu pur·e ? Fais le test sur pure.wp-corp.eu.org !">
+<meta property="og:image" content="{{base_url}}/score/{{share_string}}/og.png">
+{% endif %}
 {% endblock head %}
 
 {% block content %}
