@@ -24,8 +24,8 @@ async function share() {
     ];
 
     const shareObject = {
-        title: "WartaPuretai",
-        text: `${playerName} a obtenu ce score à WartaPuretai :
+        title: "WartaPureté",
+        text: `${playerName} a obtenu ce score à WartaPureté :
 🗑️ Trashness : ${trashness} pts
 💑 Sexe : ${sex} pts
 🍺 Alcool : ${alcohol} pts
